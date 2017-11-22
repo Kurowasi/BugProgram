@@ -63,4 +63,4 @@ typings/
 .DS_Store
 
 # Migration
-#database.json
+database.json
