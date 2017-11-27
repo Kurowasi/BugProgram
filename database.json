@@ -2,7 +2,7 @@
   "dev": {
     "driver": "mysql",
     "user": "root",
-    "password": "password",
+    "password": "root",
     "database": "migration"
   }
 }

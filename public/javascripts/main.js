@@ -106,13 +106,31 @@ function showOrderHistory(list) {
     div.setAttribute('class', 'order_history_column flex');
     document.querySelector('.order_history_table').appendChild(div);
 
+	let getDate = document.createElement('div');
+	if (count == 0) {
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		getDate.innerText = year + '-' + month + '-' + day;
+	} else if (row.id > 50) {
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate()-1;
+		getDate.innerText = year + '-' + month + '-' + day;
+	}
+	if(row.id <= 50){
+		getDate.innerText = 'default';
+	}
+	div.appendChild(getDate)	;
+
     count += 1;
 
     let columnNum = document.createElement('div');
     columnNum.innerText = 'No.' + count;
     div.appendChild(columnNum);
-
-
+	  
     let id = document.createElement('div');
     id.innerText = row.id;
     div.appendChild(id);
