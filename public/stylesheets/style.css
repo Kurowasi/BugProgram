@@ -2,7 +2,7 @@
                         共通部分
 ****************************************************************/
 /*reset*/
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, 
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
 fieldset, input, textarea, p, blockquote, th, td{
     margin: 0;
     padding: 0;
@@ -54,6 +54,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.income{
+	color: #F00;
+}
+.spending{
+	color: #00F;
 }
 
 /**********************************
@@ -146,7 +153,6 @@ body {
     text-align: center;
     border-bottom: 1px solid #000;
 }
-
 
 .pagenation.flex {
     justify-content: center;

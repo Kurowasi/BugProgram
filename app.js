@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var getOrderHistory = require('./routes/getOrderHistory');
 var setOrderHistory = require('./routes/setOrderHistory');
 var getUsername = require('./routes/getUsername');
+/*Ichinohe*/
+var deleteOrderHistory = require('./routes/deleteOrderHistory');
 
 var app = express();
 
@@ -56,6 +58,9 @@ app.use('/users', users);
 app.use('/getOrderHistory', getOrderHistory);
 app.use('/setOrderHistory', setOrderHistory);
 app.use('/getUsername', getUsername);
+/*Ichinohe*/
+app.use('/deleteOrderHistory', deleteOrderHistory);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
