@@ -25,6 +25,7 @@ router.post('/', function(req, res) {
         break;
     }
 
+    console.log(req.body.product_name, req.body.product_price, balance);
     insertSql += '"' + req.body.product_name + '",' + req.body.product_price + ',' + balance + ');';
 
     app.connection.query(insertSql, function(err, rows) {

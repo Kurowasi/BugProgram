@@ -70,7 +70,7 @@ function getMaxColumn(list) {
   /**
    * バグ混入
    */
-  let maxColumn = list.length * 2;
+  let maxColumn = list.length;
   return maxColumn;
 }
 
@@ -106,31 +106,12 @@ function showOrderHistory(list) {
     div.setAttribute('class', 'order_history_column flex');
     document.querySelector('.order_history_table').appendChild(div);
 
-	let getDate = document.createElement('div');
-	if (count == 0) {
-		var date = new Date();
-		var year = date.getFullYear();
-		var month = date.getMonth()+1;
-		var day = date.getDate();
-		getDate.innerText = year + '-' + month + '-' + day;
-	} else if (row.id > 50) {
-		var date = new Date();
-		var year = date.getFullYear();
-		var month = date.getMonth()+1;
-		var day = date.getDate()-1;
-		getDate.innerText = year + '-' + month + '-' + day;
-	}
-	if(row.id <= 50){
-		getDate.innerText = 'default';
-	}
-	div.appendChild(getDate)	;
-
     count += 1;
 
     let columnNum = document.createElement('div');
     columnNum.innerText = 'No.' + count;
     div.appendChild(columnNum);
-	  
+
     let id = document.createElement('div');
     id.innerText = row.id;
     div.appendChild(id);
@@ -155,6 +136,14 @@ function showOrderHistory(list) {
     }
     balance.innerText = '¥' + yenParse(row.balance);
     div.appendChild(balance);
+
+/*Ichinohe*/
+    let timeStamp = document.createElement('div');
+    if(row.timestamp){
+      row.timestamp = row.timestamp.substring(0, row.timestamp.indexOf("T"));
+    }else row.timestamp = 0;
+    timeStamp.innerText = row.timestamp;
+    div.appendChild(timeStamp);
   });
 };
 
@@ -163,7 +152,13 @@ function showOrderHistory(list) {
  * showCurrentBalance
  */
 function showCurrentBalance(currentBalance) {
-  document.querySelector('.contents p').innerText += '¥' + yenParse(currentBalance);
+  let currentBalenceTemp = yenParse(currentBalance);
+/*Ichinohe*/
+  if(currentBalenceTemp >= 0){
+    document.querySelector('.contents p').innerText += '¥' + currentBalenceTemp;
+  }else document.querySelector('.contents p').innerText += '¥' + currentBalenceTemp;
+
+//  document.getElementById(".contents p").style.color = "#F00";
 };
 
 
@@ -178,9 +173,12 @@ function showPagenation(num) {
     flag = false;
     num = 4;
   }
-  
+
   for (var i = 1; i <= num; i++) {
+/*Ichinohe*/
     let button = document.createElement('button');
+    button.innerHTML = '<button type="button" onclick="alert(\'Hello\')"></button>';
+
     button.innerText = i;
     parentElm.appendChild(button);
   }
